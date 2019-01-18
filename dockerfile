@@ -1,7 +1,7 @@
 FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu14.04
 
 RUN apt update
-RUN apt install -qqy python python-dev python-pytest cython curl gcc
+RUN apt install -qqy python python-dev python-pytest python-opencv python-pil cython curl gcc
 
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 RUN python get-pip.py
