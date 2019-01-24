@@ -1,4 +1,4 @@
-FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
+FROM nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04
 
 RUN apt update
 RUN apt install -qqy python python-dev cython curl gcc
@@ -9,7 +9,6 @@ RUN python get-pip.py
 COPY hdrnet/requirements.txt /hdrnet/hdrnet/requirements.txt
 WORKDIR /hdrnet/hdrnet
 
-RUN pip install numpy==1.12.0
 RUN pip install -r requirements.txt
 
 COPY hdrnet /hdrnet/hdrnet

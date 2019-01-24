@@ -9,10 +9,12 @@ LIB_DIR = lib
 
 CC = c++ -std=c++11
 NVCC = nvcc -std c++11
-CFLAGS = -fPIC -I$(TF_INC) -O2 -D_GLIBCXX_USE_CXX11_ABI=0
+TF_LIB = `python -c 'import tensorflow as tf; print(tf.sysconfig.get_lib())')`
+CFLAGS = -fPIC -I$(TF_INC) -L$(TF_LIB) -ltensorflow_framework -O2 -D_GLIBCXX_USE_CXX11_ABI=0
 LDFLAGS = -L$(CUDA_HOME)/lib64 -lcudart
-NVFLAGS = -DGOOGLE_CUDA=1 -x cu -Xcompiler -fPIC -I$(TF_INC) \
-					-expt-relaxed-constexpr -Wno-deprecated-gpu-targets -ftz=true
+NVFLAGS = -DGOOGLE_CUDA=1 -x cu -Xcompiler -fPIC -DNDEBUG -D_GLIBCXX_USE_CXX11_ABI=0 \
+			-I$(CUDA_HOME)/.. -I$(TF_INC) -L$(TF_LIB) -ltensorflow_framework \
+			-expt-relaxed-constexpr -Wno-deprecated-gpu-targets -ftz=true
 
 
 SRC = bilateral_slice.cc
