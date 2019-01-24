@@ -1,4 +1,4 @@
-FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu14.04
+FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu16.04
 
 RUN apt update
 RUN apt install -qqy python python-dev cython curl gcc
