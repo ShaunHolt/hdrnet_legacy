@@ -19,7 +19,8 @@ RUN make
 RUN apt install -qqy python-pytest python-opencv python-pil python-scipy
 # RUN py.test test
 
-COPY . /hdrnet/hdrnet
+COPY . /hdrnet
+WORKDIR /hdrnet
 
 # WORKDIR /hdrnet/benchmark
 # RUN apt install -qqy pkg-config libglew-dev freeglut3-dev libopencv-dev libgflags-dev
