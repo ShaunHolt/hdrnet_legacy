@@ -13,6 +13,8 @@ RUN pip install -r requirements.txt
 
 COPY hdrnet /hdrnet/hdrnet
 
+ENV TF_INC /usr/local/lib/python2.7/dist-packages/tensorflow/include
+ENV TF_LIB /usr/local/lib/python2.7/dist-packages/tensorflow
 RUN make
 
 RUN apt install -qqy python-pytest python-opencv python-pil python-scipy

@@ -1,5 +1,6 @@
 TF_INC ?= `python -c 'import tensorflow as tf; print(tf.sysconfig.get_include())'`
 # TF_INC ?= /usr/local/lib/python2.7/dist-packages/tensorflow/include
+TF_LIB ?= `python -c 'import tensorflow as tf; print(tf.sysconfig.get_lib())')`
 CUDA_HOME ?= /usr/local/cuda
 
 SRC_DIR = ops
@@ -9,7 +10,6 @@ LIB_DIR = lib
 
 CC = c++ -std=c++11
 NVCC = nvcc -std c++11
-TF_LIB = `python -c 'import tensorflow as tf; print(tf.sysconfig.get_lib())')`
 CFLAGS = -fPIC -I$(TF_INC) -L$(TF_LIB) -ltensorflow_framework -O2 -D_GLIBCXX_USE_CXX11_ABI=0
 LDFLAGS = -L$(CUDA_HOME)/lib64 -lcudart
 NVFLAGS = -DGOOGLE_CUDA=1 -x cu -Xcompiler -fPIC -DNDEBUG -D_GLIBCXX_USE_CXX11_ABI=0 \
